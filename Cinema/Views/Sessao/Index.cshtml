@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Cinema.Models.Sessao>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Criar um novo</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SessaoId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataHorario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vagas)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Filme)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sala)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Numero)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SessaoId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataHorario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vagas)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Filme.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sala.Numero)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Numero)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.SessaoId">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.SessaoId">Detalhes</a> |
+                <a asp-action="Delete" asp-route-id="@item.SessaoId">Deletar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

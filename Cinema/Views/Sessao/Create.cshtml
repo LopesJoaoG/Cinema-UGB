@@ -1,0 +1,53 @@
+﻿@using Cinema.Models
+@model Cinema.Models.Sessao
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Adicionar</h1>
+
+<h4>Sessao</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="DataHorario" class="control-label">Horário e Data</label>
+                <input asp-for="DataHorario" class="form-control" />
+                <span asp-validation-for="DataHorario" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Vagas" class="control-label">Vagas</label>
+                <input asp-for="Vagas" class="form-control" />
+                <span asp-validation-for="Vagas" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FilmeId" class="control-label">Filme - Nome</label>
+                <select asp-for="FilmeId" class="form-control" asp-items="ViewBag.FilmeId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="SalaId" class="control-label">Sala - Numero</label>
+                <select asp-for="SalaId" class="form-control" asp-items="ViewBag.SalaId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Numero" class="control-label">Sessao - Numero</label>
+                <input asp-for="Numero" class="form-control" />
+                <span asp-validation-for="Numero" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
